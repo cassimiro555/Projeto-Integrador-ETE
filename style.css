@@ -1,0 +1,528 @@
+/* =========================================================
+   Ponto de Escuta — ETEPLAP  |  Design System v2
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* ── Tokens ─────────────────────────────────────────────── */
+:root {
+  --bg:        #040a06;
+  --surface:   #081009;
+  --surface-2: #0d1a10;
+  --chrome:    #060e08;          /* header + footer */
+
+  --text:      #d6edd e;
+  --soft:      #7fa98e;
+  --xsoft:     #445c4d;
+
+  --green-300: #4ade80;
+  --green-400: #22c55e;
+  --green-500: #16a34a;
+  --green-600: #15803d;
+  --green-700: #166534;
+
+  --blue-500:  #3b82f6;
+  --blue-600:  #2563eb;
+
+  --red-400:   #f87171;
+  --red-500:   #ef4444;
+  --red-600:   #dc2626;
+
+  --amber-400: #fbbf24;
+  --amber-bg:  rgba(251,191,36,.08);
+  --amber-bdr: rgba(251,191,36,.22);
+
+  --border:    rgba(180,220,195,.09);
+  --bdr-hover: rgba(180,220,195,.18);
+
+  --sh-sm: 0 2px 8px  rgba(0,0,0,.50);
+  --sh-md: 0 6px 20px rgba(0,0,0,.60);
+
+  --r:    14px;
+  --r-sm: 9px;
+
+  --max:  960px;
+  --focus: 0 0 0 3px rgba(22,163,74,.32);
+}
+
+/* ── Reset ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #d6edde;
+  background: var(--bg);
+  background-image:
+    radial-gradient(ellipse 900px 500px at 8%   0%, rgba(22,163,74,.13), transparent 60%),
+    radial-gradient(ellipse 500px 400px at 95% 100%, rgba(22,163,74,.07), transparent 55%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Tipografia ─────────────────────────────────────────── */
+h1,h2,h3,h4 {
+  font-weight: 700;
+  line-height: 1.25;
+  color: #d6edde;
+  letter-spacing: -.02em;
+}
+h1 { font-size: 1.8rem; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: 1.05rem; }
+h4 { font-size: .9rem; }
+
+p          { color: var(--soft); line-height: 1.7; }
+small      { font-size: .8rem;  color: var(--xsoft); }
+strong     { color: #d6edde; font-weight: 600; }
+a          { color: var(--green-400); text-decoration: none; transition: color .15s; }
+a:hover    { color: var(--green-300); }
+
+/* ── Layout ─────────────────────────────────────────────── */
+.container, main.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 36px 22px 70px;
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--chrome);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 0 rgba(0,0,0,.6), var(--sh-sm);
+  /* layout flex direto — cobre todos os PHPs */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 13px 24px;
+}
+
+header h1 {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--green-400);
+  margin: 0;
+}
+
+header p {
+  font-size: .8rem;
+  color: var(--xsoft);
+  margin: 0;
+}
+header p strong { color: var(--soft); }
+header p a      { font-size: .8rem; color: var(--green-400); }
+
+/* ── Nav ────────────────────────────────────────────────── */
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  align-items: center;
+}
+
+nav a {
+  padding: 6px 13px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  color: var(--soft);
+  font-size: .855rem;
+  font-weight: 500;
+  transition: color .18s, background .18s, border-color .18s, transform .1s;
+}
+nav a:hover {
+  color: #d6edde;
+  background: rgba(22,163,74,.10);
+  border-color: rgba(22,163,74,.24);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+footer {
+  background: var(--chrome);
+  border-top: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 22px 24px;
+  text-align: center;
+  margin-top: 60px;
+}
+footer p { color: var(--xsoft); font-size: .82rem; margin: 0; }
+
+/* ── Cards ──────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 20px 22px;
+  box-shadow: var(--sh-sm);
+  transition: border-color .2s, box-shadow .2s;
+  margin-bottom: 14px;
+}
+.card:hover { border-color: var(--bdr-hover); box-shadow: var(--sh-md); }
+
+.card h2, .card h3, .card h4 { color: #d6edde; margin-bottom: 8px; }
+.card p, .card small, .card label { color: var(--soft); }
+.card strong { color: #d6edde; }
+
+/* ── Inputs ─────────────────────────────────────────────── */
+label {
+  display: block;
+  font-size: .83rem;
+  font-weight: 600;
+  color: var(--soft);
+  margin-bottom: 5px;
+  letter-spacing: .01em;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 13px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: #d6edde;
+  font: inherit;
+  font-size: .88rem;
+  outline: none;
+  transition: border-color .18s, box-shadow .18s;
+  -webkit-appearance: none;
+  appearance: none;
+  margin-bottom: 16px;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--green-500);
+  box-shadow: var(--focus);
+}
+input::placeholder, textarea::placeholder { color: var(--xsoft); }
+input[type="date"]  { color-scheme: dark; }
+select              { cursor: pointer; }
+textarea            { resize: vertical; min-height: 90px; margin-bottom: 16px; }
+input[type="radio"],
+input[type="checkbox"] { accent-color: var(--green-400); cursor: pointer; }
+
+/* Remove <br> de espaçamento nos forms legados */
+form br { display: none; }
+
+/* ── Botões ─────────────────────────────────────────────── */
+button, .btn {
+  font: inherit;
+  font-size: .875rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  padding: 10px 20px;
+  transition: background .15s, box-shadow .15s, transform .08s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: .01em;
+}
+button:active, .btn:active { transform: translateY(1px); }
+button:focus-visible, a:focus-visible,
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: none; box-shadow: var(--focus);
+}
+
+/* primário verde (submit padrão) */
+button[type="submit"] {
+  background: var(--green-500);
+  color: #fff;
+  border-color: var(--green-700);
+  box-shadow: 0 4px 14px rgba(22,163,74,.22);
+  margin-top: 4px;
+}
+button[type="submit"]:hover {
+  background: var(--green-600);
+  box-shadow: 0 6px 20px rgba(22,163,74,.32);
+}
+
+.botao-inicial, .botao-pagina {
+  background: var(--green-500);
+  color: #fff;
+  border-color: var(--green-700);
+  box-shadow: 0 4px 14px rgba(22,163,74,.22);
+  padding: 11px 24px;
+}
+.botao-inicial:hover, .botao-pagina:hover {
+  background: var(--green-600);
+  box-shadow: 0 6px 20px rgba(22,163,74,.32);
+  color: #fff;
+}
+
+.btn-verde {
+  background: var(--green-500); color: #fff;
+  border-color: var(--green-700);
+  box-shadow: 0 4px 14px rgba(22,163,74,.22);
+}
+.btn-verde:hover { background: var(--green-600); }
+
+.btn-azul {
+  background: var(--blue-500); color: #fff;
+  border-color: var(--blue-600);
+  box-shadow: 0 4px 14px rgba(59,130,246,.20);
+}
+.btn-azul:hover { background: var(--blue-600); }
+
+.btn-vermelho {
+  background: var(--red-500); color: #fff;
+  border-color: var(--red-600);
+  box-shadow: 0 4px 14px rgba(239,68,68,.18);
+}
+.btn-vermelho:hover { background: var(--red-600); }
+
+/* botão excluir secundário */
+button.btn-excluir {
+  background: rgba(239,68,68,.10);
+  color: var(--red-400);
+  border-color: rgba(239,68,68,.25);
+  font-size: .8rem;
+  padding: 7px 13px;
+}
+button.btn-excluir:hover {
+  background: rgba(239,68,68,.18);
+  border-color: rgba(239,68,68,.40);
+}
+
+/* ── Alertas ────────────────────────────────────────────── */
+.msg-erro, .msg-sucesso, .msg-aviso {
+  border-radius: var(--r-sm);
+  padding: 11px 16px;
+  font-size: .875rem;
+  margin-bottom: 20px;
+}
+.msg-sucesso {
+  background: rgba(22,163,74,.10);
+  border: 1px solid rgba(22,163,74,.28);
+  color: var(--green-300);
+}
+.msg-erro {
+  background: rgba(239,68,68,.10);
+  border: 1px solid rgba(239,68,68,.28);
+  color: var(--red-400);
+}
+.msg-aviso {
+  background: var(--amber-bg);
+  border: 1px solid var(--amber-bdr);
+  border-left: 3px solid var(--amber-400);
+  color: var(--soft);
+}
+.msg-aviso strong { color: var(--amber-400); }
+
+/* aviso sem vagas */
+#aviso-sem-vagas {
+  background: rgba(239,68,68,.09);
+  border: 1px solid rgba(239,68,68,.25);
+  border-left: 3px solid var(--red-500);
+  border-radius: var(--r-sm);
+  padding: 11px 16px;
+  color: var(--red-400);
+  font-size: .875rem;
+  margin-bottom: 16px;
+}
+
+/* ── Status ─────────────────────────────────────────────── */
+.status-pendente   { color: var(--amber-400); font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .07em; }
+.status-confirmado { color: var(--green-400); font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .07em; }
+.status-cancelado  { color: var(--red-400);   font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .07em; }
+
+/* ── Painel — seções ────────────────────────────────────── */
+.secao { margin-top: 38px; }
+
+.opcao-visibilidade {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  display: flex; gap: 20px; flex-wrap: wrap; align-items: center;
+}
+.opcao-visibilidade label {
+  display: flex; align-items: center; gap: 7px;
+  margin: 0; cursor: pointer; font-weight: 500;
+}
+
+/* ── Formulário de agendamento ───────────────────────────── */
+#form-agendamento {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 26px 28px;
+  margin-bottom: 34px;
+  box-shadow: var(--sh-sm);
+}
+#form-agendamento p { color: var(--soft); margin-bottom: 12px; font-size: .88rem; }
+#form-agendamento p strong { color: #d6edde; }
+
+/* ── Página Index (welcome) ─────────────────────────────── */
+section.inicial {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 14px;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 70px 26px 90px;
+}
+section.inicial h1 {
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.12;
+  background: linear-gradient(130deg, #e2f5ea 10%, var(--green-400) 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+section.inicial h2 {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--soft);
+  letter-spacing: 0;
+}
+section.inicial > a { margin-top: 6px; }
+
+/* ── Início — cards de navegação ────────────────────────── */
+.cards-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
+}
+.cards-nav .card { margin-bottom: 0; }
+.cards-nav .card h2 { font-size: 1.05rem; margin-bottom: 6px; }
+.cards-nav .card p  { font-size: .875rem; margin-bottom: 14px; }
+
+/* ── Login / Cadastro ────────────────────────────────────── */
+.form-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+}
+.form-box {
+  width: 100%;
+  max-width: 420px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 32px 30px 36px;
+  box-shadow: var(--sh-md);
+}
+.form-box h2 { margin-bottom: 22px; text-align: center; }
+.form-box > p { text-align: center; margin-top: 18px; font-size: .875rem; }
+
+/* ── Página Psicóloga ────────────────────────────────────── */
+.psicologa-hero {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 30px 28px;
+  margin-bottom: 26px;
+  box-shadow: var(--sh-sm);
+}
+.psicologa-hero h2 {
+  font-size: 1.15rem;
+  color: var(--green-400);
+  margin-bottom: 4px;
+  letter-spacing: 0;
+}
+.psicologa-hero h3 {
+  font-size: .88rem;
+  font-weight: 500;
+  color: var(--xsoft);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.psicologa-texto {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 26px 28px;
+  box-shadow: var(--sh-sm);
+}
+.psicologa-texto h3 {
+  color: var(--soft);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.psicologa-texto p {
+  color: var(--soft);
+  font-size: .9rem;
+  line-height: 1.75;
+  margin-bottom: 14px;
+  max-width: 66ch;
+}
+.psicologa-texto p:last-child { margin-bottom: 0; }
+
+/* ── Página Sobre ────────────────────────────────────────── */
+.sobre-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 28px 30px;
+  box-shadow: var(--sh-sm);
+}
+.sobre-box h2 { margin-bottom: 20px; }
+.sobre-box p {
+  color: var(--soft);
+  font-size: .9rem;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  max-width: 68ch;
+}
+.sobre-box p:last-child { margin-bottom: 0; }
+
+/* ── Grid utilitário ─────────────────────────────────────── */
+@media (min-width: 900px) {
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+}
+
+/* ── Responsivo ─────────────────────────────────────────── */
+@media (max-width: 680px) {
+  header { padding: 11px 16px; }
+  nav a  { padding: 5px 10px; font-size: .8rem; }
+  .container, main.container { padding: 24px 14px 50px; }
+  section.inicial { padding: 50px 16px 60px; }
+  .form-box { padding: 24px 18px 28px; }
+  #form-agendamento { padding: 18px 16px; }
+  .psicologa-hero, .psicologa-texto, .sobre-box { padding: 20px 16px; }
+  .cards-nav { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 400px) {
+  .cards-nav { grid-template-columns: 1fr; }
+  nav a { padding: 5px 8px; font-size: .77rem; }
+}
+
+/* ── Acessibilidade ─────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
